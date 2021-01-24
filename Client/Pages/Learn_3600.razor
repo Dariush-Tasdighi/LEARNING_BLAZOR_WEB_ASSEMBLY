@@ -1,0 +1,46 @@
+﻿@page "/learn_3600"
+
+<h1>
+	@(Message)
+</h1>
+
+<hr />
+
+<DtxButton2></DtxButton2>
+
+<hr />
+
+<DtxButton2 Caption="Caption 1"></DtxButton2>
+
+<hr />
+
+<DtxButton2 Caption="Caption 2" OnClick="DtxButtonClicked2"></DtxButton2>
+
+<hr />
+
+<DtxButton2 Caption="Caption 3" OnClick="() => DtxButtonClicked3()"></DtxButton2>
+
+<hr />
+
+<DtxButton2 Caption="Caption 4" OnClick="(e) => DtxButtonClicked4(e)"></DtxButton2>
+
+@code {
+
+	public string Message { get; set; }
+
+	private void DtxButtonClicked2()
+	{
+		Message = "[Caption 2] Clicked!";
+	}
+
+	private void DtxButtonClicked3()
+	{
+		Message = "[Caption 3] Clicked!";
+	}
+
+	private void DtxButtonClicked4(MouseEventArgs e)
+	{
+		Message = $"[Caption 4] Clicked! - X: { e.ScreenX } - Y: { e.ScreenY }";
+	}
+
+}

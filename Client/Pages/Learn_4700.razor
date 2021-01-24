@@ -1,0 +1,19 @@
+﻿@page "/learn_4700"
+@inject Client.Services.LogService LogService
+
+<input type="text" class="form-control" @bind="Message" />
+<br />
+<button type="button" class="btn btn-primary" @onclick="AddLog">Add Log</button>
+
+@code {
+
+	public string Message { get; set; }
+
+	public void AddLog()
+	{
+		LogService.AddLog(Message);
+
+		Message = null;
+	}
+
+}

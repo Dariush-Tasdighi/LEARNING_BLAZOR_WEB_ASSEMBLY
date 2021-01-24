@@ -1,0 +1,178 @@
+﻿@page "/learn_2300"
+
+<div class="row">
+	<div class="col">
+		<h5>
+			Add New Todo
+		</h5>
+
+		Title
+		<br />
+		<input type="text" class="form-control" @bind="newTodoTitle" @bind:event="oninput" />
+		<br />
+		<button type="button" class="btn btn-primary" @onclick="AddNewTodo">Add Todo</button>
+	</div>
+</div>
+
+<hr />
+
+<div class="row">
+	<div class="col">
+		<h3>
+			Todos
+		</h3>
+
+		<ul>
+
+			@foreach (var item in todos)
+			{
+				<li>
+					<input type="checkbox" @bind="item.IsDone" />
+					@(item.Title)
+				</li>
+			}
+
+		</ul>
+
+		<hr />
+
+		<h3>
+			Todos
+			[
+			@(todos.Where(current => current.IsDone == false).Count())
+			]
+		</h3>
+
+		<ul>
+
+			@foreach (var item in todos)
+			{
+				<li>
+					@*<button type="button" class="btn btn-danger btn-sm" @onclick="Delete(item)">X</button>*@
+					<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item)">X</button>
+					@*<button type="button" class="btn btn-danger btn-sm" @onclick="(e) => Delete(e, item)">X</button>*@
+					<input type="checkbox" @bind="item.IsDone" />
+					@(item.Title)
+				</li>
+			}
+
+		</ul>
+
+		<hr />
+
+		<h3>
+			Todos
+			[
+			@(todos.Where(current => current.IsDone == false).Count())
+			]
+		</h3>
+
+		<ul>
+
+			@for (int index = 0; index < todos.Count; index++)
+			{
+				var item = todos[index];
+
+				<li>
+					@(index + 1)
+					-
+					<input type="checkbox" @bind="item.IsDone" />
+					@(item.Title)
+				</li>
+			}
+
+		</ul>
+
+		<hr />
+
+		<h3>
+			Todos
+			[
+			@(todos.Where(current => current.IsDone == false).Count())
+			]
+		</h3>
+
+		<h5>
+			دستور ذیل کار نمی‌کند
+		</h5>
+
+		<ul>
+
+			@for (int index = 0; index < todos.Count; index++)
+			{
+				<li>
+					@(index + 1)
+					-
+					<input type="checkbox" @bind="todos[index].IsDone" />
+					@(todos[index].Title)
+				</li>
+			}
+
+		</ul>
+	</div>
+</div>
+
+@code {
+
+	protected override void OnInitialized()
+	{
+		todos =
+			new List<Models.TodoItem>();
+
+		for (int index = 1; index <= 10; index++)
+		{
+			var todoItem =
+				new Models.TodoItem
+				{
+					Title = $"Todo { index }",
+					IsDone = (index % 2 == 0),
+				};
+
+			todos.Add(todoItem);
+		}
+	}
+
+	private string newTodoTitle;
+	private System.Collections.Generic.List<Models.TodoItem> todos;
+
+	//private System.Collections.Generic.List<Models.TodoItem>
+	//	todos = new List<Models.TodoItem>();
+
+	private void AddNewTodo()
+	{
+		if (string.IsNullOrWhiteSpace(newTodoTitle))
+		{
+			newTodoTitle = string.Empty;
+
+			return;
+		}
+
+		newTodoTitle =
+			newTodoTitle.Fix();
+
+		bool hasAny =
+			todos
+			.Where(current => current.Title.ToLower() == newTodoTitle.ToLower())
+			.Any();
+
+		if (hasAny)
+		{
+			return;
+		}
+
+		var newTodoItem =
+			new Models.TodoItem
+			{
+				IsDone = false,
+				Title = newTodoTitle,
+			};
+
+		todos.Add(newTodoItem);
+	}
+
+	public void Delete(Models.TodoItem item)
+	{
+		todos.Remove(item);
+	}
+
+}

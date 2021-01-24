@@ -1,0 +1,76 @@
+﻿@page "/learn_4300"
+
+@if (List == null)
+{
+	<div>Loading...</div>
+}
+else
+{
+	<div class="row">
+		<div class="col table-responsive">
+			<table class="table table-bordered table-sm table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							@(Resources.DataDictionary.Id)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Title)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Body)
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (int index = 0; index <= List.Count - 1; index++)
+					{
+						var item = List[index];
+
+						<tr>
+							<td>
+								@(index + 1)
+							</td>
+							<td>
+								@((MarkupString)item.Title)
+							</td>
+							<td>
+								@((MarkupString)item.Body)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<hr />
+}
+
+@code
+{
+
+	protected override Task OnInitializedAsync()
+	{
+		List =
+			new List<Models.Post>();
+
+		for (int index = 1; index <= 10; index++)
+		{
+			var entity =
+				new Models.Post
+				{
+					Id = index,
+					Body = $"Body { index }",
+					Title = $"Title { index }",
+				};
+
+			List.Add(entity);
+		}
+
+		return base.OnInitializedAsync();
+	}
+
+	public System.Collections.Generic.List<Models.Post> List { get; set; }
+
+}
