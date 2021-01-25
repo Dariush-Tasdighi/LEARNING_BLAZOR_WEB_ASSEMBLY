@@ -1,8 +1,8 @@
 ﻿namespace Client.Services
 {
-	public class PostService : Infrastructure.BaseService
+	public class PostsService : Infrastructure.ServiceBase
 	{
-		public PostService
+		public PostsService
 			(System.Net.Http.HttpClient http) : base(http: http)
 		{
 			BaseUrl =
@@ -15,13 +15,13 @@
 			<System.Collections.Generic.IList<Models.Post>>
 			GetAsync()
 		{
-			string query = "posts";
+			string url = "posts";
 
 			var result =
 				await
 				GetAsync
 				<System.Collections.Generic.IList<Models.Post>>
-				(query: query);
+				(url: url);
 
 			return result;
 		}

@@ -3,7 +3,9 @@
 
 @if (List == null)
 {
-	<div>Loading...</div>
+	<div>
+		Loading...
+	</div>
 }
 else
 {
@@ -54,8 +56,14 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
+		//string requestUri =
+		//	"https://jsonplaceholder.typicode.com/posts";
+
+		//string requestUri =
+		//	"https://jsonplaceholder.typicode.com/posts&size=10";
+
 		string requestUri =
-			"https://jsonplaceholder.typicode.com/posts";
+			"https://www.alaki.com/posts";
 
 		List =
 			await

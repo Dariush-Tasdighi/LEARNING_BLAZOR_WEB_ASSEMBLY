@@ -2,9 +2,9 @@
 
 namespace Infrastructure
 {
-	public abstract class BaseService : object
+	public abstract class ServiceBase : object
 	{
-		public BaseService(System.Net.Http.HttpClient http) : base()
+		public ServiceBase(System.Net.Http.HttpClient http) : base()
 		{
 			Http = http;
 
@@ -25,18 +25,21 @@ namespace Infrastructure
 
 		protected virtual
 			async
-			System.Threading.Tasks.Task<TTesponse>
-			GetAsync<TTesponse>(string query)
+			System.Threading.Tasks.Task<TResponse>
+			GetAsync<TResponse>(string url, string query = null)
 		{
 			System.Net.Http.HttpResponseMessage response = null;
 
 			try
 			{
 				string requestUri =
-					$"{ BaseUrl }/{ query }";
+					$"{ BaseUrl }/{ url }";
 
-				//string requestUri =
-				//	"https://jsonplaceholder.typicode.com/posts";
+				if (string.IsNullOrWhiteSpace(query) == false)
+				{
+					requestUri =
+						$"{ requestUri }?{ query }";
+				}
 
 				response =
 					await
@@ -50,9 +53,9 @@ namespace Infrastructure
 				{
 					try
 					{
-						TTesponse result =
+						TResponse result =
 							await
-							response.Content.ReadFromJsonAsync<TTesponse>();
+							response.Content.ReadFromJsonAsync<TResponse>();
 
 						return result;
 					}

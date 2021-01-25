@@ -1,7 +1,7 @@
 ﻿@page "/learn_3900"
 @page "/alaki/dolaki"
 
-@inject NavigationManager navigationManager
+@inject NavigationManager NavigationManager
 
 <h3>
 	Learning NavigationManager
@@ -9,7 +9,7 @@
 
 <hr />
 
-Current Page Url: @(navigationManager.Uri)
+Current Page Url: @(NavigationManager.Uri)
 
 <br />
 <button type="button" @onclick="GoToIndexPage1">Go To Index Page (Force Load = false)!</button>
@@ -36,37 +36,37 @@ Current Page Url: @(navigationManager.Uri)
 
 	private void GoToIndexPage1()
 	{
-		navigationManager.NavigateTo(uri: "", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "", forceLoad: false);
 	}
 
 	private void GoToIndexPage2()
 	{
-		navigationManager.NavigateTo(uri: "", forceLoad: true);
+		NavigationManager.NavigateTo(uri: "", forceLoad: true);
 	}
 
 	private void GoToSomePage1()
 	{
-		navigationManager.NavigateTo(uri: "/learn_4000", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "/learn_4000", forceLoad: false);
 	}
 
 	private void GoToSomePage2()
 	{
-		navigationManager.NavigateTo(uri: "/learn_4000/12345", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "/learn_4000/12345", forceLoad: false);
 	}
 
 	private void GoToSomePage3()
 	{
-		navigationManager.NavigateTo(uri: "/learn_4100", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "/learn_4100", forceLoad: false);
 	}
 
 	private void GoToSomePage4()
 	{
-		navigationManager.NavigateTo(uri: "/learn_4100/Hi", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "/learn_4100/Hi", forceLoad: false);
 	}
 
 	private void GoToSomePage5()
 	{
-		navigationManager.NavigateTo(uri: "/learn_4100/Hi/Dariush", forceLoad: false);
+		NavigationManager.NavigateTo(uri: "/learn_4100/Hi/Dariush", forceLoad: false);
 	}
 
 }

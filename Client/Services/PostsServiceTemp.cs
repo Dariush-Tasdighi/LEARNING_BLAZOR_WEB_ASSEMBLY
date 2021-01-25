@@ -2,17 +2,18 @@
 
 namespace Client.Services
 {
-	public class PostServiceTemp : object
+	public class PostsServiceTemp : object
 	{
-		public PostServiceTemp
+		public PostsServiceTemp
 			(System.Net.Http.HttpClient http) : base()
 		{
 			Http = http;
+
+			//_http = http;
 		}
 
-		//protected private System.Net.Http.HttpClient _http { get; }
-		//protected System.Net.Http.HttpClient Http { get; set; }
 		protected System.Net.Http.HttpClient Http { get; }
+		//private readonly System.Net.Http.HttpClient _http;
 
 		public
 			async

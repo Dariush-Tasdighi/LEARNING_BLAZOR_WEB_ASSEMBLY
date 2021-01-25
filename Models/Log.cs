@@ -12,6 +12,12 @@
 
 		public string Message { get; set; }
 
+		//public string ClassName { get; set; }
+
+		//public string FunctionName { get; set; }
+
+		//public string NamespaceName { get; set; }
+
 		public System.DateTime Timestamp { get; set; }
 	}
 }

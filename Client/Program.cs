@@ -16,9 +16,9 @@ namespace Client
 
 			builder.RootComponents.Add<App>("#app");
 
-			//builder.Services.AddScoped<System.Net.Http.HttpClient>();
-
 			//builder.Services.AddScoped(System.Net.Http.HttpClient);
+
+			//builder.Services.AddScoped<System.Net.Http.HttpClient>();
 
 			builder.Services.AddSingleton
 				(current => new System.Net.Http.HttpClient
@@ -27,9 +27,9 @@ namespace Client
 						new System.Uri(builder.HostEnvironment.BaseAddress),
 				});
 
-			//builder.Services.AddScoped<Services.PostServiceTemp>();
-			//builder.Services.AddTransient<Services.PostServiceTemp>();
-			builder.Services.AddSingleton<Services.PostServiceTemp>();
+			//builder.Services.AddScoped<Services.PostsServiceTemp>();
+			//builder.Services.AddTransient<Services.PostsServiceTemp>();
+			builder.Services.AddSingleton<Services.PostsServiceTemp>();
 
 			// نکته مهم: دستور فوق کار نمی‌کند
 			// در صورتی که
@@ -38,8 +38,8 @@ namespace Client
 			// AddScoped
 			// ثبت شده باشد
 
-			builder.Services.AddSingleton<Services.LogService>();
-			builder.Services.AddSingleton<Services.PostService>();
+			builder.Services.AddSingleton<Services.LogsService>();
+			builder.Services.AddSingleton<Services.PostsService>();
 
 			await builder.Build().RunAsync();
 		}

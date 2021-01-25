@@ -1,4 +1,5 @@
-﻿@page "/learn_4000/{Id:int}"
+﻿@page "/learn_4000/"
+@page "/learn_4000/{Id:int}"
 
 <h3>
 	This page accept some input value!
@@ -11,6 +12,16 @@ Id: @(Id)
 @code {
 
 	[Parameter]
-	public int Id { get; set; }
+	public int? Id { get; set; }
+
+	protected override Task OnParametersSetAsync()
+	{
+		if (Id.HasValue == false)
+		{
+			Id = 10;
+		}
+
+		return base.OnParametersSetAsync();
+	}
 
 }

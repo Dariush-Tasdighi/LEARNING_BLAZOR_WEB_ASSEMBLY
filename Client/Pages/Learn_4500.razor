@@ -1,9 +1,11 @@
 ﻿@page "/learn_4500"
-@inject Client.Services.PostServiceTemp PostService
+@inject Client.Services.PostsServiceTemp PostsService
 
 @if (List == null)
 {
-	<div>Loading...</div>
+	<div>
+		Loading...
+	</div>
 }
 else
 {
@@ -56,7 +58,7 @@ else
 	{
 		List =
 			await
-			PostService.GetAsync();
+			PostsService.GetAsync();
 	}
 
 	public System.Collections.Generic.IList<Models.Post> List { get; set; }

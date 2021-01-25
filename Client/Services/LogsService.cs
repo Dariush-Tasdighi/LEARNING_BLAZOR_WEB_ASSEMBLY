@@ -2,9 +2,9 @@
 
 namespace Client.Services
 {
-	public class LogService : object
+	public class LogsService : object
 	{
-		public LogService() : base()
+		public LogsService() : base()
 		{
 			Logs =
 				new System.Collections.Generic.List<Models.Log>();
@@ -26,6 +26,24 @@ namespace Client.Services
 				new Models.Log(message: message);
 
 			//Logs.Add(log);
+			Logs.Insert(index: 0, item: log);
+		}
+
+		public void AddLog(Models.Log log)
+		{
+			if (log == null)
+			{
+				return;
+			}
+
+			if (string.IsNullOrWhiteSpace(log.Message))
+			{
+				return;
+			}
+
+			log.Message =
+				log.Message.Fix();
+
 			Logs.Insert(index: 0, item: log);
 		}
 

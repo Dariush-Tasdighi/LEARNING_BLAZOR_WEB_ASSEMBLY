@@ -1,5 +1,5 @@
 ﻿@page "/display_logs"
-@inject Client.Services.LogService LogService
+@inject Client.Services.LogsService LogsService
 
 <div class="row">
 	<div class="col">
@@ -26,10 +26,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				@for (int index = 0; index <= LogService.GetLogs().Count - 1; index++)
+				@for (int index = 0; index <= LogsService.GetLogs().Count - 1; index++)
 				{
 					var item =
-						LogService.GetLogs()[index];
+						LogsService.GetLogs()[index];
 
 					<tr>
 						<td>
@@ -54,7 +54,7 @@
 
 	public void Clear()
 	{
-		LogService.ClearLogs();
+		LogsService.ClearLogs();
 	}
 
 }

@@ -2,7 +2,9 @@
 
 @if (List == null)
 {
-	<div>Loading...</div>
+	<div>
+		Loading...
+	</div>
 }
 else
 {
@@ -57,7 +59,7 @@ else
 
 		for (int index = 1; index <= 10; index++)
 		{
-			var entity =
+			var post =
 				new Models.Post
 				{
 					Id = index,
@@ -65,12 +67,12 @@ else
 					Title = $"Title { index }",
 				};
 
-			List.Add(entity);
+			List.Add(post);
 		}
 
 		return base.OnInitializedAsync();
 	}
 
-	public System.Collections.Generic.List<Models.Post> List { get; set; }
+	public System.Collections.Generic.IList<Models.Post> List { get; set; }
 
 }

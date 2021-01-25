@@ -1,5 +1,5 @@
 ﻿@page "/learn_4700"
-@inject Client.Services.LogService LogService
+@inject Client.Services.LogsService LogsService
 
 <input type="text" class="form-control" @bind="Message" />
 <br />
@@ -11,7 +11,7 @@
 
 	public void AddLog()
 	{
-		LogService.AddLog(Message);
+		LogsService.AddLog(message: Message);
 
 		Message = null;
 	}
