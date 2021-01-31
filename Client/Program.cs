@@ -27,9 +27,12 @@ namespace Client
 						new System.Uri(builder.HostEnvironment.BaseAddress),
 				});
 
-			//builder.Services.AddScoped<Services.PostsServiceTemp>();
-			//builder.Services.AddTransient<Services.PostsServiceTemp>();
-			builder.Services.AddSingleton<Services.PostsServiceTemp>();
+			//builder.Services.AddScoped<Services.PostsServiceTemp1>();
+			//builder.Services.AddTransient<Services.PostsServiceTemp1>();
+			builder.Services.AddSingleton<Services.PostsServiceTemp1>();
+
+			builder.Services.AddSingleton<Services.PostsServiceTemp2>();
+			builder.Services.AddSingleton<Services.PostsServiceTemp3>();
 
 			// نکته مهم: دستور فوق کار نمی‌کند
 			// در صورتی که

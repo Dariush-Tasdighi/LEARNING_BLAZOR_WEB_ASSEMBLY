@@ -2,9 +2,9 @@
 
 namespace Client.Services
 {
-	public class PostsServiceTemp : object
+	public class PostsServiceTemp2 : object
 	{
-		public PostsServiceTemp
+		public PostsServiceTemp2
 			(System.Net.Http.HttpClient http) : base()
 		{
 			Http = http;

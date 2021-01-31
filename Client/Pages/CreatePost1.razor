@@ -1,0 +1,82 @@
+﻿@page "/create_post_1"
+@inject NavigationManager NavigationManager
+
+<h3>
+	Create Post
+</h3>
+
+@if (string.IsNullOrWhiteSpace(ErrorMessages) == false)
+{
+	<div class="alert alert-danger" role="alert">
+		@((MarkupString)ErrorMessages)
+	</div>
+}
+
+<div class="form-group">
+	<label for="title">@(Resources.DataDictionary.Title)</label>
+	<input type="text" id="title" class="form-control" @bind-value="Model.Title" />
+</div>
+
+<div class="form-group form-check">
+	<input type="checkbox" id="isActive" class="form-check-input" @bind-value="Model.IsActive" />
+	<label class="form-check-label" for="isActive">@(Resources.DataDictionary.IsActive)</label>
+</div>
+
+<div class="form-group">
+	<label for="body">@(Resources.DataDictionary.Body)</label>
+	<textarea id="body" class="form-control" @bind="Model.Body"></textarea>
+</div>
+
+<div class="form-group">
+	<button type="button" class="btn btn-primary" @onclick="Create">@(Resources.Buttons.Create)</button>
+	<button type="reset" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
+</div>
+
+@code
+{
+
+	protected override void OnInitialized()
+	{
+		Model = new Models.Post();
+	}
+
+	public Models.Post Model { get; set; }
+	public string ErrorMessages { get; set; }
+
+	public void Reset()
+	{
+		ErrorMessages = null;
+		Model = new Models.Post();
+	}
+
+	public void Create()
+	{
+		ErrorMessages = null;
+		bool hasErrors = false;
+
+		if (string.IsNullOrWhiteSpace(Model.Title))
+		{
+			hasErrors = true;
+			ErrorMessages = "Title is required!";
+		}
+
+		if (string.IsNullOrWhiteSpace(Model.Body))
+		{
+			hasErrors = true;
+
+			if (ErrorMessages != null)
+			{
+				ErrorMessages += "<br />";
+			}
+
+			ErrorMessages += "Body is required!";
+		}
+
+		if (hasErrors == false)
+		{
+			// Save Data!
+
+			NavigationManager.NavigateTo(uri: "/learn_5000", forceLoad: false);
+		}
+	}
+}

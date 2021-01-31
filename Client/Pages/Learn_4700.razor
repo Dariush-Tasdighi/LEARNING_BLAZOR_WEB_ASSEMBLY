@@ -1,19 +1,66 @@
 ﻿@page "/learn_4700"
-@inject Client.Services.LogsService LogsService
+@inject Client.Services.PostsServiceTemp3 PostsService
 
-<input type="text" class="form-control" @bind="Message" />
-<br />
-<button type="button" class="btn btn-primary" @onclick="AddLog">Add Log</button>
+@if (List == null)
+{
+	<div>
+		Loading...
+	</div>
+}
+else
+{
+	<div class="row">
+		<div class="col table-responsive">
+			<table class="table table-bordered table-sm table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							@(Resources.DataDictionary.Id)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Title)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Body)
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (int index = 0; index <= List.Count - 1; index++)
+					{
+						var item = List[index];
 
-@code {
+						<tr>
+							<td>
+								@(index + 1)
+							</td>
+							<td>
+								@((MarkupString)item.Title)
+							</td>
+							<td>
+								@((MarkupString)item.Body)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-	public string Message { get; set; }
+	<hr />
 
-	public void AddLog()
+}
+
+@code
+{
+
+	protected override async Task OnInitializedAsync()
 	{
-		LogsService.AddLog(message: Message);
-
-		Message = null;
+		List =
+			await
+			PostsService.GetAsync();
 	}
+
+	public System.Collections.Generic.IList<Models.Post> List { get; set; }
 
 }

@@ -1,13 +1,10 @@
 ﻿namespace Client.Services
 {
-	public class PostsService : Infrastructure.ServiceBase
+	public class PostsServiceTemp3 : Infrastructure.ServiceBase1
 	{
-		public PostsService
-			(System.Net.Http.HttpClient http, LogsService logsService) : base(http: http, logsService)
+		public PostsServiceTemp3
+			(System.Net.Http.HttpClient http) : base(http: http)
 		{
-			//BaseUrl =
-			//	"https://googooli.magooli.com";
-
 			BaseUrl =
 				"https://jsonplaceholder.typicode.com";
 		}

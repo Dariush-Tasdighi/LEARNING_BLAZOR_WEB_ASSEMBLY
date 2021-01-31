@@ -4,24 +4,18 @@ namespace Infrastructure
 {
 	public abstract class ServiceBase : object
 	{
-		public ServiceBase(System.Net.Http.HttpClient http) : base()
+		public ServiceBase(System.Net.Http.HttpClient http,
+			Client.Services.LogsService logsService) : base()
 		{
 			Http = http;
-
-			//JsonOptions =
-			//	new System.Text.Json.JsonSerializerOptions
-			//	{
-			//		PropertyNameCaseInsensitive = true,
-			//	};
-
-			//Http.DefaultRequestHeaders
+			LogsService = logsService;
 		}
 
 		protected string BaseUrl { get; set; }
 
 		protected System.Net.Http.HttpClient Http { get; }
 
-		//protected System.Text.Json.JsonSerializerOptions JsonOptions { get; set; }
+		protected Client.Services.LogsService LogsService { get; }
 
 		protected virtual
 			async
@@ -53,27 +47,39 @@ namespace Infrastructure
 				{
 					try
 					{
+						// ReadFromJsonAsync -> Extension Method -> using System.Net.Http.Json;
 						TResponse result =
 							await
 							response.Content.ReadFromJsonAsync<TResponse>();
 
 						return result;
 					}
+
 					// When content type is not valid
-					catch (System.NotSupportedException)
+					catch (System.NotSupportedException ex)
 					{
-						System.Console.WriteLine("The content type is not supported.");
+						string errorMessage =
+							$"Exception: { ex.Message } - The content type is not supported.";
+
+						LogsService.AddLog(type: GetType(), message: errorMessage);
 					}
+
 					// Invalid JSON
-					catch (System.Text.Json.JsonException)
+					catch (System.Text.Json.JsonException ex)
 					{
-						System.Console.WriteLine("Invalid JSON.");
+						string errorMessage =
+							$"Exception: { ex.Message } - Invalid JSON.";
+
+						LogsService.AddLog(type: GetType(), message: errorMessage);
 					}
 				}
 			}
 			catch (System.Net.Http.HttpRequestException ex)
 			{
-				System.Console.WriteLine(ex.Message);
+				string errorMessage =
+					$"Exception: { ex.Message }";
+
+				LogsService.AddLog(type: GetType(), message: errorMessage);
 			}
 			finally
 			{

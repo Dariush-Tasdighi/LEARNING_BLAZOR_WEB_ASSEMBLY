@@ -12,15 +12,23 @@ namespace Client.Services
 
 		protected System.Collections.Generic.IList<Models.Log> Logs { get; }
 
-		public void AddLog(string message)
+		public void AddLog(System.Type type, string message)
 		{
 			if (string.IsNullOrWhiteSpace(message))
 			{
 				return;
 			}
 
+			// **************************************************
+			System.Diagnostics.StackTrace
+				stackTrace = new System.Diagnostics.StackTrace();
+
+			System.Reflection.MethodBase
+				methodBase = stackTrace.GetFrame(1).GetMethod();
+			// **************************************************
+
 			message =
-				message.Fix();
+				$"{ type.Namespace } -> { type.Name } -> { methodBase.Name }: { message.Fix() }";
 
 			var log =
 				new Models.Log(message: message);
@@ -29,7 +37,7 @@ namespace Client.Services
 			Logs.Insert(index: 0, item: log);
 		}
 
-		public void AddLog(Models.Log log)
+		public void AddLog(System.Type type, Models.Log log)
 		{
 			if (log == null)
 			{
@@ -41,8 +49,16 @@ namespace Client.Services
 				return;
 			}
 
+			// **************************************************
+			System.Diagnostics.StackTrace
+				stackTrace = new System.Diagnostics.StackTrace();
+
+			System.Reflection.MethodBase
+				methodBase = stackTrace.GetFrame(1).GetMethod();
+			// **************************************************
+
 			log.Message =
-				log.Message.Fix();
+				$"{ type.Namespace } -> { type.Name } -> { methodBase.Name }: { log.Message.Fix() }";
 
 			Logs.Insert(index: 0, item: log);
 		}
