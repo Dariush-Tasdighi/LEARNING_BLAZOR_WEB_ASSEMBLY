@@ -141,6 +141,9 @@
   <data name="RowNumber" xml:space="preserve">
     <value>#</value>
   </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>Sub Total</value>
+  </data>
   <data name="Timestamp" xml:space="preserve">
     <value>Timestamp</value>
   </data>

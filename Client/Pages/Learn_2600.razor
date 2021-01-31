@@ -11,16 +11,16 @@
 			<thead>
 				<tr>
 					<th>
-						#
+						@(Resources.DataDictionary.RowNumber)
 					</th>
 					<th>
 						@(Resources.DataDictionary.Name)
 					</th>
 					<th>
-						Price
+						@(Resources.DataDictionary.Price)
 					</th>
 					<th>
-						Count
+						@(Resources.DataDictionary.Count)
 					</th>
 					<th>
 					</th>
@@ -57,7 +57,8 @@
 	</div>
 </div>
 
-@code {
+@code
+{
 
 	protected override void OnInitialized()
 	{

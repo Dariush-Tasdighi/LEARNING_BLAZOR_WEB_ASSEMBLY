@@ -6,12 +6,22 @@
 		{
 		}
 
+		// **********
 		public int Id { get; set; }
+		// **********
 
-		public string Body { get; set; }
-
-		public string Title { get; set; }
-
+		// **********
 		public bool IsActive { get; set; }
+		// **********
+
+		// **********
+		[System.ComponentModel.DataAnnotations.Required]
+		public string Body { get; set; }
+		// **********
+
+		// **********
+		[System.ComponentModel.DataAnnotations.Required]
+		public string Title { get; set; }
+		// **********
 	}
 }

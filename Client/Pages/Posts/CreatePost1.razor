@@ -1,4 +1,4 @@
-﻿@page "/create_post_1"
+﻿@page "/posts/create_post_1"
 @inject NavigationManager NavigationManager
 
 <h3>
@@ -12,14 +12,14 @@
 	</div>
 }
 
-<div class="form-group">
-	<label for="title">@(Resources.DataDictionary.Title)</label>
-	<input type="text" id="title" class="form-control" @bind-value="Model.Title" />
-</div>
-
 <div class="form-group form-check">
 	<input type="checkbox" id="isActive" class="form-check-input" @bind-value="Model.IsActive" />
 	<label class="form-check-label" for="isActive">@(Resources.DataDictionary.IsActive)</label>
+</div>
+
+<div class="form-group">
+	<label for="title">@(Resources.DataDictionary.Title)</label>
+	<input type="text" id="title" class="form-control" @bind-value="Model.Title" />
 </div>
 
 <div class="form-group">
@@ -79,4 +79,5 @@
 			NavigationManager.NavigateTo(uri: "/learn_5000", forceLoad: false);
 		}
 	}
+
 }
