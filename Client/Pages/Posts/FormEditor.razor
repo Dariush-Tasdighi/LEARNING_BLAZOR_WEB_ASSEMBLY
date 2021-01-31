@@ -1,0 +1,67 @@
+﻿<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
+	<DataAnnotationsValidator />
+	@*<ValidationSummary />*@
+
+	<div class="form-group form-check">
+		<InputCheckbox id="isActive" class="form-check-input" @bind-Value="Model.IsActive" />
+		<label class="form-check-label" for="isActive">@(Resources.DataDictionary.IsActive)</label>
+		<div class="form-control-validation">
+			<ValidationMessage For="() => Model.IsActive" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="title">@(Resources.DataDictionary.Title)</label>
+		<InputText id="title" class="form-control" @bind-Value="Model.Title" />
+		<div class="form-control-validation">
+			<ValidationMessage For="() => Model.Title" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="description">@(Resources.DataDictionary.Body)</label>
+		<InputTextArea id="description" class="form-control" @bind-Value="Model.Body" />
+		<div class="form-control-validation">
+			<ValidationMessage For="() => Model.Body" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">
+			@if (Type == Infrastructure.Enums.EditFormType.Create)
+			{
+				@(Resources.Buttons.Create)
+			}
+			else
+			{
+				@(Resources.Buttons.Save)
+			}
+		</button>
+		<button type="reset" class="btn btn-secondary">@(Resources.Buttons.Reset)</button>
+	</div>
+</EditForm>
+
+Type: @(Type)
+
+@code
+{
+
+	protected override void OnInitialized()
+	{
+	}
+
+	[Parameter]
+	public Models.Post Model { get; set; }
+
+	[Parameter]
+	public Infrastructure.Enums.EditFormType Type { get; set; }
+
+	[Parameter]
+	public EventCallback OnValidSubmit { get; set; }
+
+	private void HandleValidSubmit()
+	{
+		OnValidSubmit.InvokeAsync(null);
+	}
+
+}

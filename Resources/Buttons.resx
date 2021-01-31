@@ -132,4 +132,10 @@
   <data name="Return" xml:space="preserve">
     <value>Return</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
 </root>

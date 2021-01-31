@@ -1,5 +1,6 @@
-﻿@page "/learn_4500"
-@inject Client.Services.PostsServiceTemp1 PostsService
+﻿@page "/learn_5200"
+@inject NavigationManager NavigationManager
+@inject Client.Services.PostsService PostsService
 
 @if (List == null)
 {
@@ -9,6 +10,14 @@
 }
 else
 {
+	<div class="row">
+		<div class="col">
+			<button type="button" class="btn btn-primary" @onclick="Create">Create</button>
+		</div>
+	</div>
+
+	<hr />
+
 	<div class="row">
 		<div class="col table-responsive">
 			<table class="table table-bordered table-sm table-striped table-hover">
@@ -48,7 +57,6 @@ else
 	</div>
 
 	<hr />
-
 }
 
 @code
@@ -62,5 +70,10 @@ else
 	}
 
 	public System.Collections.Generic.IList<Models.Post> List { get; set; }
+
+	public void Create()
+	{
+		NavigationManager.NavigateTo(uri: "/posts/create_post_3", forceLoad: false);
+	}
 
 }
