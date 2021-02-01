@@ -2,8 +2,8 @@
 @inject NavigationManager NavigationManager
 
 <EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
-	<DataAnnotationsValidator />
 	@*<ValidationSummary />*@
+	<DataAnnotationsValidator />
 
 	<div class="form-group form-check">
 		<InputCheckbox id="isActive" class="form-check-input" @bind-Value="Model.IsActive" />
@@ -43,7 +43,8 @@
 		// نکته مهم
 		// اگر مدل وجود نداشته باشد به خطا خواهیم خورد
 		// پس مدل نباید نال باشد
-		Model = new Models.Post();
+		Model =
+			new Models.Post();
 	}
 
 	public Models.Post Model { get; set; }

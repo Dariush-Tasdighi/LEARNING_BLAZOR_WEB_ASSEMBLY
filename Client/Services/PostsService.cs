@@ -3,7 +3,7 @@
 	public class PostsService : Infrastructure.ServiceBase
 	{
 		public PostsService
-			(System.Net.Http.HttpClient http, LogsService logsService) : base(http: http, logsService)
+			(System.Net.Http.HttpClient http, LogsService logsService) : base(http, logsService)
 		{
 			//BaseUrl =
 			//	"https://googooli.magooli.com";

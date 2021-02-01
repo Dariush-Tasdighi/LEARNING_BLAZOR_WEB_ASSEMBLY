@@ -61,7 +61,11 @@ namespace Infrastructure
 						string errorMessage =
 							$"Exception: { ex.Message } - The content type is not supported.";
 
+						// Static داخل تابع غیر
 						LogsService.AddLog(type: GetType(), message: errorMessage);
+
+						// Static داخل تابع
+						//LogsService.AddLog(type: typeof(ServiceBase), message: errorMessage);
 					}
 
 					// Invalid JSON

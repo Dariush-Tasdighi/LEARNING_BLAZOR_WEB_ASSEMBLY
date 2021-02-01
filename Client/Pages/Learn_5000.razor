@@ -72,7 +72,7 @@ else
 
 	public System.Collections.Generic.IList<Models.Post> List { get; set; }
 
-	public void Create()
+	private void Create()
 	{
 		NavigationManager.NavigateTo(uri: "/posts/create_post_1", forceLoad: false);
 	}

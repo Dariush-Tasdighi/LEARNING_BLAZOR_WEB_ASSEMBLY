@@ -1,6 +1,6 @@
 ﻿<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
-	<DataAnnotationsValidator />
 	@*<ValidationSummary />*@
+	<DataAnnotationsValidator />
 
 	<div class="form-group form-check">
 		<InputCheckbox id="isActive" class="form-check-input" @bind-Value="Model.IsActive" />
@@ -40,8 +40,6 @@
 		<button type="reset" class="btn btn-secondary">@(Resources.Buttons.Reset)</button>
 	</div>
 </EditForm>
-
-Type: @(Type)
 
 @code
 {
