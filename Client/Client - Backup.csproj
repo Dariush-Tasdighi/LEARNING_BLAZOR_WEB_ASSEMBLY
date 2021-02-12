@@ -13,14 +13,13 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Dtx\Dtx.csproj" />
-		<ProjectReference Include="..\LazyLoadedComponents\LazyLoadedComponents.csproj" />
 		<ProjectReference Include="..\Models\Models.csproj" />
 		<ProjectReference Include="..\Dtx.Razor\Dtx.Razor.csproj" />
 		<ProjectReference Include="..\Resources\Resources.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<BlazorWebAssemblyLazyLoad Include="LazyLoadedComponents.dll" />
+		<BlazorWebAssemblyLazyLoad Include="LazyLoadedComponents.dll"/>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 
