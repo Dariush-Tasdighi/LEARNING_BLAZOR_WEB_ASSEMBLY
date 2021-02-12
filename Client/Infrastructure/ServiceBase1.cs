@@ -60,11 +60,13 @@ namespace Infrastructure
 
 						return result;
 					}
+
 					// When content type is not valid
 					catch (System.NotSupportedException)
 					{
 						System.Console.WriteLine("The content type is not supported.");
 					}
+
 					// Invalid JSON
 					catch (System.Text.Json.JsonException)
 					{
@@ -72,13 +74,21 @@ namespace Infrastructure
 					}
 				}
 			}
+
 			catch (System.Net.Http.HttpRequestException ex)
 			{
 				System.Console.WriteLine(ex.Message);
 			}
+
+			catch (System.Exception ex)
+			{
+				System.Console.WriteLine(ex.Message);
+			}
+
 			finally
 			{
 				response.Dispose();
+				//response = null;
 			}
 
 			return default;
