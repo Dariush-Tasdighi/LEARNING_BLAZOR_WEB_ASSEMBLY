@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtx", "Dtx\Dtx.csproj", "{4C5A7D89-CC24-428E-ABF3-87962ED2E02E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dtx.Razor", "Dtx.Razor\Dtx.Razor.csproj", "{C9706C92-2E76-4140-8BFE-9DB9A36DAF8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dtx.Razor", "Dtx.Razor\Dtx.Razor.csproj", "{C9706C92-2E76-4140-8BFE-9DB9A36DAF8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyLoadedComponents", "LazyLoadedComponents\LazyLoadedComponents.csproj", "{D9837489-20A3-4AFA-8F8C-511F39407D4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyLoadedComponents", "LazyLoadedComponents\LazyLoadedComponents.csproj", "{D9837489-20A3-4AFA-8F8C-511F39407D4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
