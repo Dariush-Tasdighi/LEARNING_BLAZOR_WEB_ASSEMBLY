@@ -19,7 +19,10 @@
 
 	private void IncreaseChildCounter()
 	{
-		PanelHeader.ChildCounter++;
+		if (PanelHeader != null)
+		{
+			PanelHeader.ChildCounter++;
+		}
 	}
 
 	public void IncreaseParentCounter()
