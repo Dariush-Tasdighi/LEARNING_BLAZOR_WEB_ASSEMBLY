@@ -1,0 +1,17 @@
+﻿@page "/learn_3450"
+
+<ConvertDollarsToRials4 @bind-rials="rials" />
+
+<hr />
+
+@if (rials > 0)
+{
+	@(rials.ToString("#,##0"))
+}
+
+
+@code {
+
+  private long rials;
+
+}

@@ -2,8 +2,13 @@
 
 @for (int index = 1000; index <= 5900; index += 100)
 {
-	<a href="/learn_@(index)">Learn @(index)</a>
-	<br />
+    <a href="/learn_@(index)">Learn @(index)</a>
+    <br />
+    if (index == 3400)
+    {
+        <a href="/learn_3450">Learn 3450</a>
+        <br />
+    }
 }
 
 <hr />
