@@ -44,6 +44,8 @@ namespace Client
 			builder.Services.AddSingleton<Services.LogsService>();
 			builder.Services.AddSingleton<Services.PostsService>();
 
+			builder.Services.AddSingleton<Services.ApplicationSettingsService>();
+
 			await builder.Build().RunAsync();
 		}
 	}
