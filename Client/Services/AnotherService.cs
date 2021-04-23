@@ -12,6 +12,9 @@
 
 		public void DoSomething()
 		{
+			string baseUrl =
+				ApplicationSettingsService.BaseUrl;
+
 			string token =
 				ApplicationSettingsService.Token;
 		}
